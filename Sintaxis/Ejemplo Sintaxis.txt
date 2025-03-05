@@ -1,0 +1,19 @@
+Start {
+Int _NumA = 5
+Int _NumB = 0
+Int _It = 0
+In _NumB
+If ( _NumA > _NumB )
+{
+Out _NumA * _NumB
+}
+For ( _It = 0 ; _It < 9 ; _It + + )
+{
+Out $Hola$
+{
+Do
+{
+Out $Mundo$
+}
+While ( _It < 9 )
+} End
