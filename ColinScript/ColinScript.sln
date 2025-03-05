@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35303.130
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ColinScript", "ColinScript\ColinScript.csproj", "{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9BF684A3-F500-44FC-8E87-7CDDA3BDB874}
+	EndGlobalSection
+EndGlobal

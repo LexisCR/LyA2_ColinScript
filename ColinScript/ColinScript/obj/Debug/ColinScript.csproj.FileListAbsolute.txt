@@ -1,0 +1,70 @@
+C:\Users\eneri\source\repos\ColinScript\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\eneri\source\repos\ColinScript\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\eneri\source\repos\ColinScript\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\eneri\source\repos\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\eneri\source\repos\ColinScript\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\eneri\source\repos\ColinScript\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\eneri\source\repos\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\eneri\source\repos\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\eneri\source\repos\ColinScript\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\eneri\source\repos\ColinScript\ColinScript\obj\Debug\ColinScript.pdb
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\lexiconsola\ColinScript\ColinScript\obj\Debug\ColinScript.pdb
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.pdb
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.pdb
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\ramse\Downloads\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\LyA\COLINSCRIPT_FINALISIMO_AHORASI_VERSIONFINAL(DiseñoFinal EspañolLatino)\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.pdb
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\angel\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.pdb
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\aleja\OneDrive\Escritorio\COLINSCRIPT_VERSIONDEFINITIVA\ColinScript\ColinScript\ColinScript\obj\Debug\ColinScript.pdb

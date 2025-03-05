@@ -1,0 +1,53 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|c:\\users\\aleja\\onedrive\\escritorio\\colinscript_versiondefinitiva\\colinscript\\colinscript\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|solutionrelative:colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|solutionrelative:colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs",
+              "RelativeDocumentMoniker": "ColinScript\\Form1.cs",
+              "ToolTip": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs",
+              "RelativeToolTip": "ColinScript\\Form1.cs",
+              "ViewState": "AgIAALIBAAAAAAAAAAAcwEgAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T21:32:46.476Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs",
+              "RelativeDocumentMoniker": "ColinScript\\Form1.cs",
+              "ToolTip": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs [Design]",
+              "RelativeToolTip": "ColinScript\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-23T21:14:42.307Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
