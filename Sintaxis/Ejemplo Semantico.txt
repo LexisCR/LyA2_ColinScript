@@ -1,0 +1,9 @@
+Start {
+Int _NumA = 5
+Int _NumB = 0
+In _NumB
+If ( _NumA > _NumB )
+{
+Out _NumA * _NumB
+}
+} End

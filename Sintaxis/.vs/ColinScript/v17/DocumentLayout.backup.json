@@ -1,13 +1,13 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\",
+  "WorkspaceRootPath": "D:\\ColinScript\\LyA2_ColinScript\\Sintaxis\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|c:\\users\\aleja\\onedrive\\escritorio\\colinscript_versiondefinitiva\\colinscript\\colinscript\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|d:\\colinscript\\lya2_colinscript\\sintaxis\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|solutionrelative:colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|d:\\colinscript\\lya2_colinscript\\sintaxis\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|solutionrelative:colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs",
+              "DocumentMoniker": "D:\\ColinScript\\LyA2_ColinScript\\Sintaxis\\ColinScript\\Form1.cs",
               "RelativeDocumentMoniker": "ColinScript\\Form1.cs",
-              "ToolTip": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs",
+              "ToolTip": "D:\\ColinScript\\LyA2_ColinScript\\Sintaxis\\ColinScript\\Form1.cs",
               "RelativeToolTip": "ColinScript\\Form1.cs",
-              "ViewState": "AgIAALIBAAAAAAAAAAAcwEgAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAL4CAAAAAAAAAAAkwNQCAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-23T21:32:46.476Z",
               "IsPinned": true,
@@ -38,12 +38,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs",
+              "DocumentMoniker": "D:\\ColinScript\\LyA2_ColinScript\\Sintaxis\\ColinScript\\Form1.cs",
               "RelativeDocumentMoniker": "ColinScript\\Form1.cs",
-              "ToolTip": "C:\\Users\\aleja\\OneDrive\\Escritorio\\COLINSCRIPT_VERSIONDEFINITIVA\\ColinScript\\ColinScript\\ColinScript\\Form1.cs [Design]",
+              "ToolTip": "D:\\ColinScript\\LyA2_ColinScript\\Sintaxis\\ColinScript\\Form1.cs [Design]",
               "RelativeToolTip": "ColinScript\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-23T21:14:42.307Z"
+              "WhenOpened": "2025-04-04T08:24:32.794Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }

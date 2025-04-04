@@ -376,6 +376,7 @@ namespace ColinScript
         string _VarAux = "";
         string _strToken = "";
         List<int> lineasErroresSintacticos = new List<int>();
+        List<string> archivoTemporal = new List<string>();
         int i = 1;
         int _intErroresSintacticos = 0;
         string _strMensajeLineas = "";
@@ -396,6 +397,8 @@ namespace ColinScript
 
             Indices.Clear();
             IndicesErrores.Clear();
+            archivoTemporal.Clear();
+
 
             // Lista que permite claves duplicadas
             List<KeyValuePair<string, string>> gramaticaOut = new List<KeyValuePair<string, string>>()
@@ -403,41 +406,41 @@ namespace ColinScript
                 new KeyValuePair<string, string>("S", "S S S S"),
 
                 //For
-                new KeyValuePair<string, string>("S", "PARE11 CAE( IDEN OPASIG IDEN CAE; CONDIC CAE; IDEN OPA OPA CAE)"),
-                new KeyValuePair<string, string>("S", "PARE11 CAE( IDEN OPASIG CONU CAE; CONDIC CAE; IDEN OPA OPA CAE)"),
+                new KeyValuePair<string, string>("FOR", "PARE11 CAE( IDEN OPASIG IDEN CAE; CONDIC CAE; IDEN OPA OPA CAE)"),
+                new KeyValuePair<string, string>("FOR", "PARE11 CAE( IDEN OPASIG CONU CAE; CONDIC CAE; IDEN OPA OPA CAE)"),
 
                 //Do While
-                new KeyValuePair<string, string>("S", "PARE08"), //Do 
+                new KeyValuePair<string, string>("DO", "PARE08"), //Do 
                 //new KeyValuePair<string, string>("S", "PARE08 CAE{ S CAE} PARE22 CAE( CONDIC CAE)"), //Do { S } While ( 5 < 3 )
 
                 //While
-                new KeyValuePair<string, string>("S", "PARE22 CAE( CONDIC CAE)"), //While ( 5 < 3 )
-                new KeyValuePair<string, string>("S", "PARE22 CAE( CONDIC CAE) CAE{ S CAE}"), //While ( 5 < 3 ) { S }
+                new KeyValuePair<string, string>("WHILE", "PARE22 CAE( CONDIC CAE)"), //While ( 5 < 3 )
+                new KeyValuePair<string, string>("WHILE", "PARE22 CAE( CONDIC CAE) CAE{ S CAE}"), //While ( 5 < 3 ) { S }
 
                 //If
-                new KeyValuePair<string, string>("S", "PARE12 CAE( CONDIC CAE)"), //If ( 5 < 3 )
-                new KeyValuePair<string, string>("S", "PARE12 CAE( CONDIC CAE) CAE{ S CAE}"), //If ( 5 < 3 ) { S }
+                new KeyValuePair<string, string>("IF", "PARE12 CAE( CONDIC CAE)"), //If ( 5 < 3 )
+                new KeyValuePair<string, string>("IF", "PARE12 CAE( CONDIC CAE) CAE{ S CAE}"), //If ( 5 < 3 ) { S }
                 
-                new KeyValuePair<string, string>("S", "CAE}"), //Fin ( } )
-                new KeyValuePair<string, string>("S", "CAE{"), //Entonces ( { )
-                new KeyValuePair<string, string>("S", "PARE17 CAE{"), //Start
-                new KeyValuePair<string, string>("S", "CAE} PARE09"), //End
-                new KeyValuePair<string, string>("S", "PARE13 IDEN"), //In
+                new KeyValuePair<string, string>("}", "CAE}"), //Fin ( } )
+                new KeyValuePair<string, string>("{", "CAE{"), //Entonces ( { )
+                new KeyValuePair<string, string>("START", "PARE17 CAE{"), //Start
+                new KeyValuePair<string, string>("END", "CAE} PARE09"), //End
+                new KeyValuePair<string, string>("CON", "PARE13 IDEN"), //In
 
                 //Declaracion
-                new KeyValuePair<string, string>("S", "TIPDAT IDEN OPASIG IDEN"),
-                new KeyValuePair<string, string>("S", "TIPDAT IDEN OPASIG IDEN"),
-                new KeyValuePair<string, string>("S", "TIPDAT IDEN OPASIG CONU"),
-                new KeyValuePair<string, string>("S", "TIPDAT IDEN OPASIG STRING"),
-                new KeyValuePair<string, string>("S", "TIPDAT IDEN OPASIG OPARI"),
-                new KeyValuePair<string, string>("S", "TIPDAT IDEN OPASIG PARE19"),
-                new KeyValuePair<string, string>("S", "TIPDAT IDEN OPASIG PARE10"),
+                new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG IDEN"),
+                new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG IDEN"),
+                new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG CONU"),
+                new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG STRING"),
+                new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG OPARI"),
+                new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG PARE19"),
+                new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG PARE10"),
 
                 //out
-                new KeyValuePair<string, string>("S", "PARE16 IDEN"),
-                new KeyValuePair<string, string>("S", "PARE16 CONU"),
-                new KeyValuePair<string, string>("S", "PARE16 STRING"),
-                new KeyValuePair<string, string>("S", "PARE16 OPARI"),
+                new KeyValuePair<string, string>("CON", "PARE16 IDEN"),
+                new KeyValuePair<string, string>("CON", "PARE16 CONU"),
+                new KeyValuePair<string, string>("CON", "PARE16 STRING"),
+                new KeyValuePair<string, string>("CON", "PARE16 OPARI"),
 
                 new KeyValuePair<string, string>("CONDIC", "OPLOG|OPREL"),
                 new KeyValuePair<string, string>("OPREL", "CONU OPR CONU"),
@@ -511,7 +514,7 @@ namespace ColinScript
                     {
                         if (letra == '|')
                         {
-                            VerificarCoincidencia(item.Key);
+                            VerificarCoincidencia(item.Key, richtxtBottomUp);
                         }
                         else
                         {
@@ -519,18 +522,22 @@ namespace ColinScript
                             _strToken += letra;
                         }
                     }
-                    VerificarCoincidencia(item.Key);
+                    VerificarCoincidencia(item.Key, richtxtBottomUp);
                 }
             }
-            if (_VarAux != "S ")
+            if (_VarAux != "CON " && _VarAux != "START " && _VarAux != "END " && _VarAux != "IF " && _VarAux != "FOR " && _VarAux != "DO " && _VarAux != "WHILE " && _VarAux != "OUT " && _VarAux != "IN " && _VarAux != "{ " && _VarAux != "} ")
             {
                 _intErroresSintacticos++;
                 lineasErroresSintacticos.Add(i);
                 IndicesErrores.Add(richtxtBottomUp.GetFirstCharIndexFromLine(renglon), richtxtBottomUp.Lines[renglon].Length);
             }
+            else
+            {
+                archivoTemporal.Add(_VarAux);
+            }
         }
         
-        public void VerificarCoincidencia(string _strKey)
+        public void VerificarCoincidencia(string _strKey, RichTextBox richtxt)
         {
             int j = 0;
             int indice = 0;
@@ -556,9 +563,9 @@ namespace ColinScript
                             nuevalinea += _VarAux[k];
                         }
                     }
-                    richtxtBottomUp.Text += nuevalinea + "\r\n";
+                    richtxt.Text += nuevalinea + "\r\n";
 
-                    Indices.Add(richtxtBottomUp.GetFirstCharIndexFromLine(renglon) + indice, _strToken.Length);
+                    Indices.Add(richtxt.GetFirstCharIndexFromLine(renglon) + indice, _strToken.Length);
                     renglon = renglon + 1;
 
                     _VarAux = nuevalinea;
@@ -592,6 +599,169 @@ namespace ColinScript
                 simbolos += numero[i] + " " + nombre[i] + " " + tipodato[i] + "\n\r";
             }
             Guardar(simbolos);
+        }
+
+        private void btnValidarSemantico_Click(object sender, EventArgs e)
+        {
+            string _strIden = "";
+            string _strNumIden = "";
+            bool _blnIden = false;
+            int _intErroresSemanticos = 0;
+            List<int> lineasErroresSemanticos = new List<int>();
+
+            richtxtJELU.Text = "";
+            renglon = 1;
+
+            Indices.Clear();
+            IndicesErrores.Clear();
+            lineasErroresSemanticos.Clear();
+            i = 1;
+
+            List<KeyValuePair<string, string>> gramaticaexpresiones = new List<KeyValuePair<string, string>>()
+            {
+                //ASIGNACION
+                new KeyValuePair<string, string>("S", "CNE OPASIG CNE"),
+                new KeyValuePair<string, string>("S", "CNR OPASIG CNR"),
+                new KeyValuePair<string, string>("S", "STRING OPASIG STRING"),
+
+                //DECLARACION DE VARIABLES
+                new KeyValuePair<string, string>("S", "PARE14 CNE OPASIG CNE"),
+                new KeyValuePair<string, string>("S", "PARE07 CNR OPASIG CNR"),
+                new KeyValuePair<string, string>("S", "PARE18 STRING OPASIG STRING"),
+
+            };
+
+            List<KeyValuePair<string, string>> JELU = new List<KeyValuePair<string, string>>()
+            {
+                new KeyValuePair<string, string>("S", "START CON END"),
+                new KeyValuePair<string, string>("CON", "CON CON"),
+                new KeyValuePair<string, string>("CON", "IF CON"),
+                new KeyValuePair<string, string>("CON", "{ CON }")
+
+            };
+
+            foreach (string Lineas in richtxt_token.Lines)
+            {
+                _strToken = "";
+                richtxtJELU.Text += "---------------------------------------------------------------------LINEA " + i + "---------------------------------------------------------------------\r\n" + Lineas + "\r\n";
+                if (Lineas[Lineas.Length - 1] == ' ') { _VarAux = Lineas.Substring(0, Lineas.Length - 1); _VarAux += " "; }//Quito el \r y \n y agrego el espacio en blanco
+                else { _VarAux = Lineas + " "; }
+                i++;
+                renglon += 2;
+
+                //Primera pasada (Verificar tipos de datos)
+                foreach (char letra in _VarAux)
+                {
+                    if (_strIden == "IDEN" && _blnIden)
+                    {
+                        if(letra != ' ') { _strNumIden += letra; } //Guarda IDEN + el numero del identificador
+                        else 
+                        { 
+                            VerificarTipoDato(int.Parse(_strNumIden)); //Al verificar, cambia _VarAux por la nueva linea
+                            _blnIden = false; 
+                            _strIden = "";  
+                            _strNumIden = "";
+
+                            for (int i = 0; i < 3; i++)
+                            {
+                                //Recorre el diccionario de abajo hacia arriba
+                                foreach (var item in gramaticaexpresiones.AsEnumerable().Reverse())
+                                {
+                                    foreach (char letra1 in item.Value)
+                                    {
+                                        if (letra1 == '|')
+                                        {
+                                            VerificarCoincidencia(item.Key, richtxtJELU);
+                                        }
+                                        else
+                                        {
+                                            //Palabra o espacio
+                                            _strToken += letra1;
+                                        }
+                                    }
+                                    VerificarCoincidencia(item.Key, richtxtJELU);
+                                }
+                            }
+                        }
+                    }
+
+                    else if (letra == 'I' || _blnIden) //Posible IDEN
+                    {
+                        _blnIden = true;
+                        _strIden += letra;
+                    }
+                    
+                    if (letra == ' ')
+                    {
+                        _strIden = "";
+                        _blnIden = false;
+                    }
+                }
+
+                if (_VarAux != "S ")
+                {
+                    _intErroresSemanticos++;
+                    lineasErroresSemanticos.Add(i);
+                }
+
+            }
+
+            if (_intErroresSemanticos > 0)
+            {
+                foreach (int LineaError in lineasErroresSemanticos) { _strMensajeLineas += LineaError + ", "; }
+                MessageBox.Show($"La(s) linea(s) {_strMensajeLineas.Substring(0, _strMensajeLineas.Length - 2)} tienen errores de tipo de dato", "Analizador Semantico", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //return;
+            }
+            else { MessageBox.Show("Tipos de datos correctas!", "Analizador Semantico", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
+            //JELU
+            string _strConcatenacionJELU = "";
+            _VarAux = "";
+            foreach (string lineas in archivoTemporal)
+            {
+                _VarAux += lineas;
+            }
+
+            for (int i = 0; i < 3; i++)
+            {
+                //Recorre el diccionario de abajo hacia arriba
+                foreach (var item in JELU.AsEnumerable().Reverse())
+                {
+                    foreach (char letra in item.Value)
+                    {
+                        if (letra == '|')
+                        {
+                            VerificarCoincidencia(item.Key, richtxtJELU);
+                        }
+                        else
+                        {
+                            //Palabra o espacio
+                            _strToken += letra;
+                        }
+                    }
+                    VerificarCoincidencia(item.Key, richtxtJELU);
+                }
+            }
+
+        }
+
+        public void VerificarTipoDato(int _intIden)
+        {
+            _strToken = "IDEN" + _intIden;
+            switch (dgvTablaSimbolos.Rows[_intIden - 1].Cells[2].Value.ToString())
+            {
+                case "int":
+                    VerificarCoincidencia("CNE", richtxtJELU);
+                    break;
+
+                case "dec":
+                    VerificarCoincidencia("CNR", richtxtJELU);
+                    break;
+
+                case "string":
+                    VerificarCoincidencia("STRING", richtxtJELU);
+                    break;
+            }
         }
     }
 }

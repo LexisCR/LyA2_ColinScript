@@ -53,9 +53,18 @@
             this.btnGuardarSimbolos = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.richtxtBottomUp = new System.Windows.Forms.RichTextBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnValidarSemantico = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.richtxtJELU = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErroresLexicos)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaSimbolos)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // richtxt_token
@@ -278,11 +287,11 @@
             this.btn_Validar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Validar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Validar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_Validar.Location = new System.Drawing.Point(1044, 545);
+            this.btn_Validar.Location = new System.Drawing.Point(45, 398);
             this.btn_Validar.Name = "btn_Validar";
             this.btn_Validar.Size = new System.Drawing.Size(164, 58);
             this.btn_Validar.TabIndex = 18;
-            this.btn_Validar.Text = "Validar";
+            this.btn_Validar.Text = "Validar Sintactico";
             this.btn_Validar.UseVisualStyleBackColor = false;
             this.btn_Validar.Click += new System.EventHandler(this.btn_Validar_Click);
             // 
@@ -306,7 +315,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(1005, 105);
+            this.label3.Location = new System.Drawing.Point(145, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(235, 50);
             this.label3.TabIndex = 21;
@@ -316,11 +325,81 @@
             // richtxtBottomUp
             // 
             this.richtxtBottomUp.BackColor = System.Drawing.Color.Cornsilk;
-            this.richtxtBottomUp.Location = new System.Drawing.Point(866, 174);
+            this.richtxtBottomUp.Location = new System.Drawing.Point(6, 72);
             this.richtxtBottomUp.Name = "richtxtBottomUp";
-            this.richtxtBottomUp.Size = new System.Drawing.Size(497, 320);
+            this.richtxtBottomUp.Size = new System.Drawing.Size(505, 320);
             this.richtxtBottomUp.TabIndex = 22;
             this.richtxtBottomUp.Text = "";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(854, 68);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(523, 574);
+            this.tabControl1.TabIndex = 23;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.LightCyan;
+            this.tabPage1.Controls.Add(this.richtxtBottomUp);
+            this.tabPage1.Controls.Add(this.btnValidarSemantico);
+            this.tabPage1.Controls.Add(this.btn_Validar);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(515, 548);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Sintactico";
+            // 
+            // btnValidarSemantico
+            // 
+            this.btnValidarSemantico.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnValidarSemantico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValidarSemantico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidarSemantico.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnValidarSemantico.Location = new System.Drawing.Point(302, 398);
+            this.btnValidarSemantico.Name = "btnValidarSemantico";
+            this.btnValidarSemantico.Size = new System.Drawing.Size(164, 58);
+            this.btnValidarSemantico.TabIndex = 23;
+            this.btnValidarSemantico.Text = "Validar Semantico";
+            this.btnValidarSemantico.UseVisualStyleBackColor = false;
+            this.btnValidarSemantico.Click += new System.EventHandler(this.btnValidarSemantico_Click);
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.LightCyan;
+            this.tabPage2.Controls.Add(this.richtxtJELU);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(515, 548);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Semantico";
+            // 
+            // richtxtJELU
+            // 
+            this.richtxtJELU.BackColor = System.Drawing.Color.Cornsilk;
+            this.richtxtJELU.Location = new System.Drawing.Point(5, 85);
+            this.richtxtJELU.Name = "richtxtJELU";
+            this.richtxtJELU.Size = new System.Drawing.Size(505, 320);
+            this.richtxtJELU.TabIndex = 25;
+            this.richtxtJELU.Text = "";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(139, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(241, 50);
+            this.label4.TabIndex = 24;
+            this.label4.Text = "Analizador Semantico\r\n(Metodo JELU)";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -328,11 +407,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightCyan;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(1375, 654);
-            this.Controls.Add(this.richtxtBottomUp);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(1377, 654);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnGuardarSimbolos);
-            this.Controls.Add(this.btn_Validar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtLineasToken);
             this.Controls.Add(this.txtLineasCod);
@@ -351,6 +428,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvErroresLexicos)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaSimbolos)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -382,6 +464,12 @@
         private System.Windows.Forms.Button btnGuardarSimbolos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richtxtBottomUp;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.RichTextBox richtxtJELU;
+        private System.Windows.Forms.Button btnValidarSemantico;
+        private System.Windows.Forms.Label label4;
     }
 }
 
