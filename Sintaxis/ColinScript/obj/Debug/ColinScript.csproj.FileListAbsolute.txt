@@ -78,3 +78,13 @@ D:\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.cspro
 D:\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
 D:\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.exe
 D:\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.pdb
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\bin\Debug\ColinScript.exe.config
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\bin\Debug\ColinScript.exe
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\bin\Debug\ColinScript.pdb
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.csproj.AssemblyReference.cache
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.Form1.resources
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.Properties.Resources.resources
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.csproj.GenerateResource.cache
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.csproj.CoreCompileInputs.cache
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.exe
+C:\Users\aleja\Documents\ColinScript\LyA2_ColinScript\Sintaxis\ColinScript\obj\Debug\ColinScript.pdb

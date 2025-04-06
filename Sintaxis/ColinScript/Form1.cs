@@ -606,6 +606,7 @@ namespace ColinScript
             string _strIden = "";
             string _strNumIden = "";
             bool _blnIden = false;
+            bool _blnS = true;
             int _intErroresSemanticos = 0;
             List<int> lineasErroresSemanticos = new List<int>();
 
@@ -649,6 +650,8 @@ namespace ColinScript
                 i++;
                 renglon += 2;
 
+                _blnS = true;
+
                 //Primera pasada (Verificar tipos de datos)
                 foreach (char letra in _VarAux)
                 {
@@ -661,6 +664,7 @@ namespace ColinScript
                             _blnIden = false; 
                             _strIden = "";  
                             _strNumIden = "";
+                            _blnS = false;
 
                             for (int i = 0; i < 3; i++)
                             {
@@ -698,6 +702,12 @@ namespace ColinScript
                     }
                 }
 
+                if (_blnS)
+                {
+                    _VarAux = "S ";
+                    //richtxtJELU.Text = "S ";
+                }
+
                 if (_VarAux != "S ")
                 {
                     _intErroresSemanticos++;
@@ -708,11 +718,11 @@ namespace ColinScript
 
             if (_intErroresSemanticos > 0)
             {
-                foreach (int LineaError in lineasErroresSemanticos) { _strMensajeLineas += LineaError + ", "; }
+                foreach (int LineaError in lineasErroresSemanticos) { _strMensajeLineas += LineaError + ", ";  }
                 MessageBox.Show($"La(s) linea(s) {_strMensajeLineas.Substring(0, _strMensajeLineas.Length - 2)} tienen errores de tipo de dato", "Analizador Semantico", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 //return;
             }
-            else { MessageBox.Show("Tipos de datos correctas!", "Analizador Semantico", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+            else { MessageBox.Show("Tipos de datos correctos!", "Analizador Semantico", MessageBoxButtons.OK, MessageBoxIcon.Information); }
 
             //JELU
             string _strConcatenacionJELU = "";
