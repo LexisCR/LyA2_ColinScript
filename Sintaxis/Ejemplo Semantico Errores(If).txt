@@ -1,0 +1,10 @@
+Int _NumB = 0
+Int _Numero = $Hola$
+In _NumB
+If ( _NumA > _NumB )
+{
+Out 2.2 / _NumB
+If ( _NumA < _NumB )
+Out 4 * _NumB
+}
+If ( 5 == _NumB )

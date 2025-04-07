@@ -55,20 +55,20 @@
             this.richtxtBottomUp = new System.Windows.Forms.RichTextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnValidarSemantico = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.richtxtJELU = new System.Windows.Forms.RichTextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvErroresSemanticos = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnValidarSemantico = new System.Windows.Forms.Button();
+            this.richtxtJELU = new System.Windows.Forms.RichTextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErroresLexicos)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaSimbolos)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvErroresSemanticos)).BeginInit();
             this.SuspendLayout();
             // 
             // richtxt_token
@@ -107,6 +107,7 @@
             // 
             this.cLinea.HeaderText = "Linea";
             this.cLinea.Name = "cLinea";
+            this.cLinea.Width = 50;
             // 
             // cError
             // 
@@ -272,13 +273,13 @@
             // 
             this.Num.HeaderText = "Num";
             this.Num.Name = "Num";
-            this.Num.Width = 120;
+            this.Num.Width = 50;
             // 
             // cNombre
             // 
             this.cNombre.HeaderText = "Nombre";
             this.cNombre.Name = "cNombre";
-            this.cNombre.Width = 160;
+            this.cNombre.Width = 200;
             // 
             // cTipoDato
             // 
@@ -291,7 +292,7 @@
             this.btn_Validar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Validar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Validar.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btn_Validar.Location = new System.Drawing.Point(45, 398);
+            this.btn_Validar.Location = new System.Drawing.Point(174, 471);
             this.btn_Validar.Name = "btn_Validar";
             this.btn_Validar.Size = new System.Drawing.Size(164, 58);
             this.btn_Validar.TabIndex = 18;
@@ -319,7 +320,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(145, 19);
+            this.label3.Location = new System.Drawing.Point(143, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(235, 50);
             this.label3.TabIndex = 21;
@@ -331,7 +332,7 @@
             this.richtxtBottomUp.BackColor = System.Drawing.Color.Cornsilk;
             this.richtxtBottomUp.Location = new System.Drawing.Point(6, 72);
             this.richtxtBottomUp.Name = "richtxtBottomUp";
-            this.richtxtBottomUp.Size = new System.Drawing.Size(505, 320);
+            this.richtxtBottomUp.Size = new System.Drawing.Size(505, 383);
             this.richtxtBottomUp.TabIndex = 22;
             this.richtxtBottomUp.Text = "";
             // 
@@ -349,7 +350,6 @@
             // 
             this.tabPage1.BackColor = System.Drawing.Color.LightCyan;
             this.tabPage1.Controls.Add(this.richtxtBottomUp);
-            this.tabPage1.Controls.Add(this.btnValidarSemantico);
             this.tabPage1.Controls.Add(this.btn_Validar);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
@@ -359,24 +359,11 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Sintactico";
             // 
-            // btnValidarSemantico
-            // 
-            this.btnValidarSemantico.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnValidarSemantico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnValidarSemantico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnValidarSemantico.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnValidarSemantico.Location = new System.Drawing.Point(302, 398);
-            this.btnValidarSemantico.Name = "btnValidarSemantico";
-            this.btnValidarSemantico.Size = new System.Drawing.Size(164, 58);
-            this.btnValidarSemantico.TabIndex = 23;
-            this.btnValidarSemantico.Text = "Validar Semantico";
-            this.btnValidarSemantico.UseVisualStyleBackColor = false;
-            this.btnValidarSemantico.Click += new System.EventHandler(this.btnValidarSemantico_Click);
-            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.LightCyan;
-            this.tabPage2.Controls.Add(this.dataGridView1);
+            this.tabPage2.Controls.Add(this.dgvErroresSemanticos);
+            this.tabPage2.Controls.Add(this.btnValidarSemantico);
             this.tabPage2.Controls.Add(this.richtxtJELU);
             this.tabPage2.Controls.Add(this.label4);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -386,12 +373,50 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Semantico";
             // 
+            // dgvErroresSemanticos
+            // 
+            this.dgvErroresSemanticos.AllowUserToOrderColumns = true;
+            this.dgvErroresSemanticos.BackgroundColor = System.Drawing.Color.Cornsilk;
+            this.dgvErroresSemanticos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.dgvErroresSemanticos.Location = new System.Drawing.Point(9, 394);
+            this.dgvErroresSemanticos.Name = "dgvErroresSemanticos";
+            this.dgvErroresSemanticos.Size = new System.Drawing.Size(369, 135);
+            this.dgvErroresSemanticos.TabIndex = 26;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Linea";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Error";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 300;
+            // 
+            // btnValidarSemantico
+            // 
+            this.btnValidarSemantico.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnValidarSemantico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnValidarSemantico.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnValidarSemantico.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnValidarSemantico.Location = new System.Drawing.Point(397, 430);
+            this.btnValidarSemantico.Name = "btnValidarSemantico";
+            this.btnValidarSemantico.Size = new System.Drawing.Size(103, 58);
+            this.btnValidarSemantico.TabIndex = 23;
+            this.btnValidarSemantico.Text = "Validar Semantico";
+            this.btnValidarSemantico.UseVisualStyleBackColor = false;
+            this.btnValidarSemantico.Click += new System.EventHandler(this.btnValidarSemantico_Click);
+            // 
             // richtxtJELU
             // 
             this.richtxtJELU.BackColor = System.Drawing.Color.Cornsilk;
-            this.richtxtJELU.Location = new System.Drawing.Point(5, 85);
+            this.richtxtJELU.Location = new System.Drawing.Point(9, 68);
             this.richtxtJELU.Name = "richtxtJELU";
-            this.richtxtJELU.Size = new System.Drawing.Size(505, 320);
+            this.richtxtJELU.Size = new System.Drawing.Size(491, 320);
             this.richtxtJELU.TabIndex = 25;
             this.richtxtJELU.Text = "";
             // 
@@ -399,35 +424,12 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(139, 32);
+            this.label4.Location = new System.Drawing.Point(137, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(241, 50);
             this.label4.TabIndex = 24;
             this.label4.Text = "Analizador Semantico\r\n(Metodo JELU)";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.Cornsilk;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2});
-            this.dataGridView1.Location = new System.Drawing.Point(9, 407);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(495, 135);
-            this.dataGridView1.TabIndex = 26;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Linea";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Error";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 350;
             // 
             // Form1
             // 
@@ -461,7 +463,7 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvErroresSemanticos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -481,15 +483,10 @@
         private System.Windows.Forms.Button btnGrdTokens;
         private System.Windows.Forms.TextBox txtLineasCod;
         private System.Windows.Forms.TextBox txtLineasToken;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cLinea;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cError;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dgvTablaSimbolos;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_Validar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTipoDato;
         private System.Windows.Forms.Button btnGuardarSimbolos;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RichTextBox richtxtBottomUp;
@@ -499,7 +496,12 @@
         private System.Windows.Forms.RichTextBox richtxtJELU;
         private System.Windows.Forms.Button btnValidarSemantico;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvErroresSemanticos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cLinea;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cError;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTipoDato;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
