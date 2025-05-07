@@ -431,6 +431,15 @@ namespace ColinScript
                 new KeyValuePair<string, string>("END", "CAE} PARE09"), //End
                 new KeyValuePair<string, string>("CON", "PARE13 IDEN"), //In
 
+                //Asignacion
+                new KeyValuePair<string, string>("CON", "IDEN OPASIG IDEN"),
+                new KeyValuePair<string, string>("CON", "IDEN OPASIG IDEN"),
+                new KeyValuePair<string, string>("CON", "IDEN OPASIG CONU"),
+                new KeyValuePair<string, string>("CON", "IDEN OPASIG STRING"),
+                new KeyValuePair<string, string>("CON", "IDEN OPASIG OPARI"),
+                new KeyValuePair<string, string>("CON", "IDEN OPASIG PARE19"),
+                new KeyValuePair<string, string>("CON", "IDEN OPASIG PARE10"),
+
                 //Declaracion
                 new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG IDEN"),
                 new KeyValuePair<string, string>("CON", "TIPDAT IDEN OPASIG IDEN"),
@@ -452,10 +461,19 @@ namespace ColinScript
                 new KeyValuePair<string, string>("OPREL", "IDEN OPR CONU"),
                 new KeyValuePair<string, string>("OPREL", "IDEN OPR IDEN"),
                 new KeyValuePair<string, string>("OPLOG", "CONDIC OPL CONDIC"),
+
+                new KeyValuePair<string, string>("OPARI", "OPARI OPA OPARI"),
+                new KeyValuePair<string, string>("OPARI", "OPARI OPA IDEN"),
+                new KeyValuePair<string, string>("OPARI", "OPARI OPA CONU"),
+                new KeyValuePair<string, string>("OPARI", "OPARI OPA IDEN"),
+                new KeyValuePair<string, string>("OPARI", "OPARI OPA CONU"),
+
                 new KeyValuePair<string, string>("OPARI", "IDEN OPA IDEN"),
                 new KeyValuePair<string, string>("OPARI", "IDEN OPA CONU"),
                 new KeyValuePair<string, string>("OPARI", "CONU OPA IDEN"),
                 new KeyValuePair<string, string>("OPARI", "CONU OPA CONU"),
+
+
 
                 
                 new KeyValuePair<string, string>("OPR", "OPR==|OPR>|OPR<"),
@@ -529,7 +547,7 @@ namespace ColinScript
                     VerificarCoincidencia(item.Key, richtxtBottomUp);
                 }
             }
-            if (_VarAux != "CON " && _VarAux != "START " && _VarAux != "END " && _VarAux != "IF " && _VarAux != "FOR " && _VarAux != "DO " && _VarAux != "WHILE " && _VarAux != "OUT " && _VarAux != "IN " && _VarAux != "{ " && _VarAux != "} ")
+            if (_VarAux != "CON " && _VarAux != "START " && _VarAux != "END " && _VarAux != "IF " && _VarAux != "FOR " && _VarAux != "DO " && _VarAux != "WHILE " && _VarAux != "OUT " && _VarAux != "IN " && _VarAux != "{ " && _VarAux != "} " && _VarAux != "ASIG")
             {
                 _intErroresSintacticos++;
                 lineasErroresSintacticos.Add(i);
@@ -543,11 +561,25 @@ namespace ColinScript
         
         public void VerificarCoincidencia(string _strKey, RichTextBox richtxt)
         {
+            
             _blnCoincidencias = false;
             int j = 0;
             int indice = 0;
             
             string nuevalinea = "";
+
+            if (_strKey == "S")
+            {
+                if (_strToken + " " == _VarAux)
+                {
+                    //No hace nada
+                }
+                else
+                {
+                    _strToken = "";
+                    return;
+                }
+            }
 
             for (int i = 0; i < _VarAux.Length; i++)
             {
@@ -671,6 +703,9 @@ namespace ColinScript
                 new KeyValuePair<string, string>("S", "PARE13 CAD"),
 
                 //TRANSFORMACION DE TIPOS DE DATOS
+                new KeyValuePair<string, string>("ENT", "ENT OPA ENT"),
+                new KeyValuePair<string, string>("DEC", "CNR"),
+
                 new KeyValuePair<string, string>("ENT", "CNE"),
                 new KeyValuePair<string, string>("DEC", "CNR"),
                 new KeyValuePair<string, string>("CAD", "STRING"),
@@ -904,6 +939,109 @@ namespace ColinScript
                     VerificarCoincidencia("CAD", richtxtJELU);
                     break;
             }
+        }
+
+        private void btnCodigoIntermedio_Click(object sender, EventArgs e)
+        {
+            dgvPrefijo.Rows.Clear();
+            dgvTripleta.Rows.Clear();
+
+            int _intNumLinea = 0;
+            bool _blnDeclaracion = false;
+            int _intVariableTemporal = 0;
+
+            List<string> Codigo = new List<string>();
+
+            foreach (string linea in txt_codigo.Lines)
+            {
+                Codigo.Add(linea);
+            }
+
+            foreach (string Linea in archivoTemporal)
+            {
+                
+                switch (Linea)
+                {
+                    case "CON ": //Una asignacion o una declaracion
+
+                        string _strAsig = "";
+                        string _strCadenaTemporal = "";
+                        string _strSignoAnterior = "=";
+                        string _strOperador = "";
+                        string _strOperandoT = "";
+                        string _strOperando1 = "";
+                        string _strOperando2 = "";
+
+                        _intVariableTemporal++;
+
+                        if (Codigo[_intNumLinea][0] != '_') //Declaracion
+                        {
+                            Codigo[_intNumLinea] = Codigo[_intNumLinea].Substring(4, Codigo[_intNumLinea].Length - 4);
+                            //_blnDeclaracion = true;
+                        }
+                        //Recorrido Infija para convertir a Prefija
+                        foreach (char letra in Codigo[_intNumLinea])
+                        {
+                            _strCadenaTemporal += letra;
+
+                            if (letra != ' ')
+                            {
+                                _strOperandoT += letra;
+                            }
+
+                            if (_blnDeclaracion)
+                            {
+                                _strCadenaTemporal = "";
+                                _blnDeclaracion = false;
+                            }
+
+                            if (letra == '=')
+                            {
+                                _strAsig = "= " + _strCadenaTemporal.Substring(0, _strCadenaTemporal.Length - 2) + " ";
+                                _strCadenaTemporal = "";
+                                _strOperandoT = "";
+                                _blnDeclaracion = true;
+                            }
+
+                            if (letra == '+' || letra == '-')
+                            {
+                                _strCadenaTemporal = letra + " " + _strCadenaTemporal.Substring(0, _strCadenaTemporal.Length - 2);
+                                dgvTripleta.Rows.Add("T" + _intVariableTemporal, _strOperandoT.Substring(0, _strOperandoT.Length - 1), _strSignoAnterior);
+                                _strSignoAnterior = letra + "";
+                                _strOperandoT = "";
+                            }
+
+                            if (letra == '*' || letra == '/')
+                            {
+                                _strOperandoT = _strOperandoT.Substring(0, _strOperandoT.Length - 1);
+                                _strCadenaTemporal = _strCadenaTemporal.Substring(0, _strCadenaTemporal.Length - 3 - _strOperandoT.Length);
+                                _strCadenaTemporal = _strCadenaTemporal + " " + letra + " " + _strOperandoT;
+                                dgvTripleta.Rows.Add("T" + _intVariableTemporal, _strOperandoT, _strSignoAnterior);
+                                _strSignoAnterior = letra + "";
+                                _strOperandoT = "";
+                            }
+
+                        }
+                        dgvTripleta.Rows.Add("T" + _intVariableTemporal, _strOperandoT, _strSignoAnterior);
+                        dgvTripleta.Rows.Add(_strAsig.Substring(2, _strAsig.Length - 2), "T" + _intVariableTemporal, "=");
+
+                        dgvPrefijo.Rows.Add(Codigo[_intNumLinea], _strAsig + _strCadenaTemporal);
+
+                        _blnDeclaracion = false;
+                        
+                        break;
+                }
+                _intNumLinea++;
+            }
+
+            //foreach (DataGridViewRow fila in dgvPrefijo.Rows)
+            //{
+            //    foreach (char letra in fila.Cells[1].Value.ToString())
+            //    {
+
+            //    }
+            //    dgvTripleta.Rows.Add(fila.Cells[1].Value);
+            //}
         }
     }
 }

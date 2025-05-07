@@ -62,6 +62,17 @@
             this.btnValidarSemantico = new System.Windows.Forms.Button();
             this.richtxtJELU = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.dgvPrefijo = new System.Windows.Forms.DataGridView();
+            this.dgvTripleta = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCodigoIntermedio = new System.Windows.Forms.Button();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErroresLexicos)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaSimbolos)).BeginInit();
@@ -69,6 +80,9 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErroresSemanticos)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrefijo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTripleta)).BeginInit();
             this.SuspendLayout();
             // 
             // richtxt_token
@@ -340,6 +354,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(854, 68);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -431,6 +446,108 @@
             this.label4.Text = "Analizador Semantico\r\n(Metodo JELU)";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.BackColor = System.Drawing.Color.LightCyan;
+            this.tabPage3.Controls.Add(this.btnCodigoIntermedio);
+            this.tabPage3.Controls.Add(this.label6);
+            this.tabPage3.Controls.Add(this.label5);
+            this.tabPage3.Controls.Add(this.dgvPrefijo);
+            this.tabPage3.Controls.Add(this.dgvTripleta);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(515, 548);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Codigo Intermedio";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(206, 247);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(104, 25);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Tripletas";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(81, 24);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(357, 25);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Expresiones Aritmeticas (Prefija)";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // dgvPrefijo
+            // 
+            this.dgvPrefijo.BackgroundColor = System.Drawing.Color.Cornsilk;
+            this.dgvPrefijo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPrefijo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.dgvPrefijo.Location = new System.Drawing.Point(3, 64);
+            this.dgvPrefijo.Name = "dgvPrefijo";
+            this.dgvPrefijo.Size = new System.Drawing.Size(509, 167);
+            this.dgvPrefijo.TabIndex = 5;
+            // 
+            // dgvTripleta
+            // 
+            this.dgvTripleta.BackgroundColor = System.Drawing.Color.Cornsilk;
+            this.dgvTripleta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvTripleta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.dgvTripleta.Location = new System.Drawing.Point(86, 284);
+            this.dgvTripleta.Name = "dgvTripleta";
+            this.dgvTripleta.Size = new System.Drawing.Size(345, 167);
+            this.dgvTripleta.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Dato Objeto";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Dato Fuente";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "Operador";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // btnCodigoIntermedio
+            // 
+            this.btnCodigoIntermedio.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCodigoIntermedio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCodigoIntermedio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCodigoIntermedio.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCodigoIntermedio.Location = new System.Drawing.Point(190, 468);
+            this.btnCodigoIntermedio.Name = "btnCodigoIntermedio";
+            this.btnCodigoIntermedio.Size = new System.Drawing.Size(141, 58);
+            this.btnCodigoIntermedio.TabIndex = 27;
+            this.btnCodigoIntermedio.Text = "Generar Codigo Intermedio";
+            this.btnCodigoIntermedio.UseVisualStyleBackColor = false;
+            this.btnCodigoIntermedio.Click += new System.EventHandler(this.btnCodigoIntermedio_Click);
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Expresion Original";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 240;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Expresion PreFija";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 240;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -464,6 +581,10 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErroresSemanticos)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPrefijo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTripleta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -504,6 +625,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cTipoDato;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.DataGridView dgvTripleta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridView dgvPrefijo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnCodigoIntermedio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
     }
 }
 

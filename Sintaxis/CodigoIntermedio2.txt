@@ -1,0 +1,7 @@
+Start {
+Int _NumW = 0
+Int _NumX = 0
+Int _NumY = 0
+Int _NumZ = 0
+_NumW = _NumX + _NumY * _NumZ
+} End
