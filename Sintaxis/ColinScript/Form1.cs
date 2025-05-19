@@ -947,8 +947,6 @@ namespace ColinScript
             dgvTripleta.Rows.Clear();
 
             int _intNumLinea = 0;
-            bool _blnDeclaracion = false;
-            int _intVariableTemporal = 0;
 
             List<string> Codigo = new List<string>();
 
@@ -963,85 +961,186 @@ namespace ColinScript
                 switch (Linea)
                 {
                     case "CON ": //Una asignacion o una declaracion
-
-                        string _strAsig = "";
-                        string _strCadenaTemporal = "";
-                        string _strSignoAnterior = "=";
-                        string _strOperador = "";
-                        string _strOperandoT = "";
-                        string _strOperando1 = "";
-                        string _strOperando2 = "";
-
-                        _intVariableTemporal++;
-
-                        if (Codigo[_intNumLinea][0] != '_') //Declaracion
-                        {
-                            Codigo[_intNumLinea] = Codigo[_intNumLinea].Substring(4, Codigo[_intNumLinea].Length - 4);
-                            //_blnDeclaracion = true;
+                        if (Codigo[_intNumLinea][0] == 'I') 
+                        { 
+                            dgvPrefijo.Rows.Add(Codigo[_intNumLinea].Substring(4, Codigo[_intNumLinea].Length - 4), ConvertirInfijaAPrefija(Codigo[_intNumLinea].Substring(4, Codigo[_intNumLinea].Length - 4))); 
                         }
-                        //Recorrido Infija para convertir a Prefija
-                        foreach (char letra in Codigo[_intNumLinea])
-                        {
-                            _strCadenaTemporal += letra;
-
-                            if (letra != ' ')
-                            {
-                                _strOperandoT += letra;
-                            }
-
-                            if (_blnDeclaracion)
-                            {
-                                _strCadenaTemporal = "";
-                                _blnDeclaracion = false;
-                            }
-
-                            if (letra == '=')
-                            {
-                                _strAsig = "= " + _strCadenaTemporal.Substring(0, _strCadenaTemporal.Length - 2) + " ";
-                                _strCadenaTemporal = "";
-                                _strOperandoT = "";
-                                _blnDeclaracion = true;
-                            }
-
-                            if (letra == '+' || letra == '-')
-                            {
-                                _strCadenaTemporal = letra + " " + _strCadenaTemporal.Substring(0, _strCadenaTemporal.Length - 2);
-                                dgvTripleta.Rows.Add("T" + _intVariableTemporal, _strOperandoT.Substring(0, _strOperandoT.Length - 1), _strSignoAnterior);
-                                _strSignoAnterior = letra + "";
-                                _strOperandoT = "";
-                            }
-
-                            if (letra == '*' || letra == '/')
-                            {
-                                _strOperandoT = _strOperandoT.Substring(0, _strOperandoT.Length - 1);
-                                _strCadenaTemporal = _strCadenaTemporal.Substring(0, _strCadenaTemporal.Length - 3 - _strOperandoT.Length);
-                                _strCadenaTemporal = _strCadenaTemporal + " " + letra + " " + _strOperandoT;
-                                dgvTripleta.Rows.Add("T" + _intVariableTemporal, _strOperandoT, _strSignoAnterior);
-                                _strSignoAnterior = letra + "";
-                                _strOperandoT = "";
-                            }
-
-                        }
-                        dgvTripleta.Rows.Add("T" + _intVariableTemporal, _strOperandoT, _strSignoAnterior);
-                        dgvTripleta.Rows.Add(_strAsig.Substring(2, _strAsig.Length - 2), "T" + _intVariableTemporal, "=");
-
-                        dgvPrefijo.Rows.Add(Codigo[_intNumLinea], _strAsig + _strCadenaTemporal);
-
-                        _blnDeclaracion = false;
+                        else { dgvPrefijo.Rows.Add(Codigo[_intNumLinea], ConvertirInfijaAPrefija(Codigo[_intNumLinea])); }
                         
                         break;
                 }
                 _intNumLinea++;
             }
 
-            //foreach (DataGridViewRow fila in dgvPrefijo.Rows)
-            //{
-            //    foreach (char letra in fila.Cells[1].Value.ToString())
-            //    {
 
-            //    }
-            //    dgvTripleta.Rows.Add(fila.Cells[1].Value);
-            //}
+            _intNumLinea = 1;
+
+            foreach (DataGridViewRow fila in dgvPrefijo.Rows)
+            {
+                if (fila.Cells[1].Value != null)
+                {
+                    var tripletas = GenerarTripletasDesdePrefija(fila.Cells[1].Value.ToString());
+                    foreach (var tripleta in tripletas)
+                    {
+                        dgvTripleta.Rows.Add(tripleta.Objeto, tripleta.Fuente, tripleta.Operador);
+                    }
+                }
+            }
         }
+
+        static int Precedencia(char op)
+        {
+            if (op == '+' || op == '-')
+                return 1;
+            else if (op == '*' || op == '/')
+                return 2;
+            else
+                return 0;
+        }
+
+        static string ConvertirInfijaAPrefija(string infija)
+        {
+            Stack<string> operandos = new Stack<string>();
+            Stack<char> operadores = new Stack<char>();
+
+            for (int i = infija.Length - 1; i >= 0; i--)
+            {
+                char c = infija[i];
+
+                if (c == ' ')
+                    continue;
+
+                if (char.IsLetterOrDigit(c))
+                {
+                    string operando = c.ToString();
+
+                    while (i - 1 >= 0 && (char.IsLetterOrDigit(infija[i - 1]) || infija[i - 1] == '_'))
+                    {
+                        i--;
+                        operando = infija[i] + operando;
+                    }
+
+                    operandos.Push(operando);
+                }
+                else // operador
+                {
+                    while (operadores.Count > 0 &&
+                           Precedencia(c) < Precedencia(operadores.Peek()))
+                    {
+                        ProcesarOperador(operadores, operandos);
+                    }
+                    operadores.Push(c);
+                }
+            }
+
+            while (operadores.Count > 0)
+            {
+                ProcesarOperador(operadores, operandos);
+            }
+
+            return operandos.Pop();
+        }
+
+        static void ProcesarOperador(Stack<char> operadores, Stack<string> operandos)
+        {
+            char op = operadores.Pop();
+            string op1 = operandos.Pop();
+            string op2 = operandos.Pop();
+            string expresion = op + " " + op1 + " " + op2;
+            operandos.Push(expresion);
+        }
+
+        public class Tripleta
+        {
+            public string Objeto { get; set; }
+            public string Fuente { get; set; }
+            public string Operador { get; set; }
+        }
+
+        int _intTemporal = 0;
+        private List<Tripleta> GenerarTripletasDesdePrefija(string prefija)
+        {
+            string[] tokens = prefija.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            Stack<string> pila = new Stack<string>();
+            List<Tripleta> tripletas = new List<Tripleta>();
+
+            
+
+            // Caso especial: asignación simple sin operación
+            if (tokens.Length == 3 && tokens[0] == "=")
+            {
+                // tokens[1] = variable destino
+                // tokens[2] = valor o variable fuente
+                tripletas.Add(new Tripleta
+                {
+                    Objeto = tokens[1],
+                    Fuente = tokens[2],
+                    Operador = "="
+                });
+                return tripletas;
+            }
+
+            _intTemporal++;
+            string temporal = "T" + _intTemporal;
+
+            string destinoFinal = null;
+
+            int inicio = 0;
+
+            if (tokens.Length >= 3 && tokens[0] == "=")
+            {
+                destinoFinal = tokens[1];
+                inicio = 2;
+            }
+
+            for (int i = tokens.Length - 1; i >= inicio; i--)
+            {
+                string token = tokens[i];
+
+                if (EsOperador(token))
+                {
+                    string op1 = pila.Pop();
+                    string op2 = pila.Pop();
+
+                    // Ambos operandos no son T1
+                    if (op1 != temporal && op2 != temporal)
+                    {
+                        tripletas.Add(new Tripleta { Objeto = temporal, Fuente = op1, Operador = "=" });
+                        tripletas.Add(new Tripleta { Objeto = temporal, Fuente = op2, Operador = token });
+                    }
+                    else if (op1 == temporal && op2 != temporal)
+                    {
+                        tripletas.Add(new Tripleta { Objeto = temporal, Fuente = op2, Operador = token });
+                    }
+                    else if (op2 == temporal && op1 != temporal)
+                    {
+                        tripletas.Add(new Tripleta { Objeto = temporal, Fuente = op1, Operador = token });
+                    }
+                    else if (op1 == temporal && op2 == temporal)
+                    {
+                        // Esto en teoría no debería pasar con una sola temporal
+                    }
+
+                    pila.Push(temporal);
+                }
+                else
+                {
+                    pila.Push(token);
+                }
+            }
+
+            if (destinoFinal != null)
+            {
+                tripletas.Add(new Tripleta { Objeto = destinoFinal, Fuente = temporal, Operador = "=" });
+            }
+
+            return tripletas;
+        }
+
+        private bool EsOperador(string token)
+        {
+            return token == "+" || token == "-" || token == "*" || token == "/" || token == "=";
+        }
+
     }
 }
