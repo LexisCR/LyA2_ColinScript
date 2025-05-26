@@ -63,16 +63,19 @@
             this.richtxtJELU = new System.Windows.Forms.RichTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.btnCodigoIntermedio = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.dgvPrefijo = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvTripleta = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnCodigoIntermedio = new System.Windows.Forms.Button();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.richEnsamblador = new System.Windows.Forms.RichTextBox();
+            this.btnEjecutarEnsamblador = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvErroresLexicos)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTablaSimbolos)).BeginInit();
@@ -83,25 +86,26 @@
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrefijo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTripleta)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.SuspendLayout();
             // 
             // richtxt_token
             // 
             this.richtxt_token.BackColor = System.Drawing.Color.Cornsilk;
             this.richtxt_token.Enabled = false;
-            this.richtxt_token.Location = new System.Drawing.Point(379, 68);
+            this.richtxt_token.Location = new System.Drawing.Point(379, 56);
             this.richtxt_token.Name = "richtxt_token";
-            this.richtxt_token.Size = new System.Drawing.Size(469, 374);
+            this.richtxt_token.Size = new System.Drawing.Size(469, 401);
             this.richtxt_token.TabIndex = 0;
             this.richtxt_token.Text = "";
             // 
             // txt_codigo
             // 
             this.txt_codigo.BackColor = System.Drawing.Color.Cornsilk;
-            this.txt_codigo.Location = new System.Drawing.Point(35, 68);
+            this.txt_codigo.Location = new System.Drawing.Point(35, 56);
             this.txt_codigo.Multiline = true;
             this.txt_codigo.Name = "txt_codigo";
-            this.txt_codigo.Size = new System.Drawing.Size(241, 374);
+            this.txt_codigo.Size = new System.Drawing.Size(315, 401);
             this.txt_codigo.TabIndex = 1;
             this.txt_codigo.TextChanged += new System.EventHandler(this.txt_codigo_TextChanged);
             // 
@@ -243,19 +247,19 @@
             // txtLineasCod
             // 
             this.txtLineasCod.Enabled = false;
-            this.txtLineasCod.Location = new System.Drawing.Point(12, 68);
+            this.txtLineasCod.Location = new System.Drawing.Point(12, 56);
             this.txtLineasCod.Multiline = true;
             this.txtLineasCod.Name = "txtLineasCod";
-            this.txtLineasCod.Size = new System.Drawing.Size(24, 374);
+            this.txtLineasCod.Size = new System.Drawing.Size(24, 401);
             this.txtLineasCod.TabIndex = 15;
             // 
             // txtLineasToken
             // 
             this.txtLineasToken.Enabled = false;
-            this.txtLineasToken.Location = new System.Drawing.Point(356, 68);
+            this.txtLineasToken.Location = new System.Drawing.Point(356, 56);
             this.txtLineasToken.Multiline = true;
             this.txtLineasToken.Name = "txtLineasToken";
-            this.txtLineasToken.Size = new System.Drawing.Size(24, 374);
+            this.txtLineasToken.Size = new System.Drawing.Size(24, 401);
             this.txtLineasToken.TabIndex = 16;
             // 
             // label2
@@ -264,7 +268,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.LightSteelBlue;
-            this.label2.Location = new System.Drawing.Point(513, 460);
+            this.label2.Location = new System.Drawing.Point(415, 465);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(186, 22);
             this.label2.TabIndex = 17;
@@ -321,10 +325,10 @@
             this.btnGuardarSimbolos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarSimbolos.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarSimbolos.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnGuardarSimbolos.Location = new System.Drawing.Point(730, 441);
+            this.btnGuardarSimbolos.Location = new System.Drawing.Point(655, 463);
             this.btnGuardarSimbolos.Margin = new System.Windows.Forms.Padding(0);
             this.btnGuardarSimbolos.Name = "btnGuardarSimbolos";
-            this.btnGuardarSimbolos.Size = new System.Drawing.Size(107, 53);
+            this.btnGuardarSimbolos.Size = new System.Drawing.Size(172, 29);
             this.btnGuardarSimbolos.TabIndex = 19;
             this.btnGuardarSimbolos.Text = "Guardar simbolos";
             this.btnGuardarSimbolos.UseVisualStyleBackColor = false;
@@ -355,6 +359,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(854, 68);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -460,6 +465,20 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Codigo Intermedio";
             // 
+            // btnCodigoIntermedio
+            // 
+            this.btnCodigoIntermedio.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnCodigoIntermedio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCodigoIntermedio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCodigoIntermedio.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnCodigoIntermedio.Location = new System.Drawing.Point(190, 468);
+            this.btnCodigoIntermedio.Name = "btnCodigoIntermedio";
+            this.btnCodigoIntermedio.Size = new System.Drawing.Size(141, 58);
+            this.btnCodigoIntermedio.TabIndex = 27;
+            this.btnCodigoIntermedio.Text = "Generar Codigo Intermedio";
+            this.btnCodigoIntermedio.UseVisualStyleBackColor = false;
+            this.btnCodigoIntermedio.Click += new System.EventHandler(this.btnCodigoIntermedio_Click);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -494,6 +513,18 @@
             this.dgvPrefijo.Size = new System.Drawing.Size(509, 167);
             this.dgvPrefijo.TabIndex = 5;
             // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Expresion Original";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 240;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Expresion PreFija";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 240;
+            // 
             // dgvTripleta
             // 
             this.dgvTripleta.BackgroundColor = System.Drawing.Color.Cornsilk;
@@ -522,31 +553,40 @@
             this.dataGridViewTextBoxColumn5.HeaderText = "Operador";
             this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // btnCodigoIntermedio
+            // tabPage4
             // 
-            this.btnCodigoIntermedio.BackColor = System.Drawing.Color.LightSteelBlue;
-            this.btnCodigoIntermedio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCodigoIntermedio.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCodigoIntermedio.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.btnCodigoIntermedio.Location = new System.Drawing.Point(190, 468);
-            this.btnCodigoIntermedio.Name = "btnCodigoIntermedio";
-            this.btnCodigoIntermedio.Size = new System.Drawing.Size(141, 58);
-            this.btnCodigoIntermedio.TabIndex = 27;
-            this.btnCodigoIntermedio.Text = "Generar Codigo Intermedio";
-            this.btnCodigoIntermedio.UseVisualStyleBackColor = false;
-            this.btnCodigoIntermedio.Click += new System.EventHandler(this.btnCodigoIntermedio_Click);
+            this.tabPage4.BackColor = System.Drawing.Color.LightCyan;
+            this.tabPage4.Controls.Add(this.btnEjecutarEnsamblador);
+            this.tabPage4.Controls.Add(this.richEnsamblador);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(515, 548);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Ensamblador";
             // 
-            // dataGridViewTextBoxColumn6
+            // richEnsamblador
             // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Expresion Original";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 240;
+            this.richEnsamblador.BackColor = System.Drawing.Color.Cornsilk;
+            this.richEnsamblador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richEnsamblador.Location = new System.Drawing.Point(3, 18);
+            this.richEnsamblador.Name = "richEnsamblador";
+            this.richEnsamblador.Size = new System.Drawing.Size(497, 374);
+            this.richEnsamblador.TabIndex = 1;
+            this.richEnsamblador.Text = "";
             // 
-            // dataGridViewTextBoxColumn7
+            // btnEjecutarEnsamblador
             // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Expresion PreFija";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 240;
+            this.btnEjecutarEnsamblador.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.btnEjecutarEnsamblador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEjecutarEnsamblador.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEjecutarEnsamblador.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.btnEjecutarEnsamblador.Location = new System.Drawing.Point(185, 432);
+            this.btnEjecutarEnsamblador.Name = "btnEjecutarEnsamblador";
+            this.btnEjecutarEnsamblador.Size = new System.Drawing.Size(141, 58);
+            this.btnEjecutarEnsamblador.TabIndex = 28;
+            this.btnEjecutarEnsamblador.Text = "Generar y ejecutar";
+            this.btnEjecutarEnsamblador.UseVisualStyleBackColor = false;
+            this.btnEjecutarEnsamblador.Click += new System.EventHandler(this.btnEjecutarEnsamblador_Click);
             // 
             // Form1
             // 
@@ -585,6 +625,7 @@
             this.tabPage3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPrefijo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTripleta)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -636,6 +677,9 @@
         private System.Windows.Forms.Button btnCodigoIntermedio;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.Button btnEjecutarEnsamblador;
+        private System.Windows.Forms.RichTextBox richEnsamblador;
     }
 }
 

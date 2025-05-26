@@ -13,6 +13,13 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Drawing.Drawing2D;
+using System.Diagnostics;
+
+//roslyn
+using Microsoft.CodeAnalysis;
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.Emit;
+using static System.Windows.Forms.LinkLabel;
 
 namespace ColinScript
 {
@@ -90,6 +97,12 @@ namespace ColinScript
                         if (letra == '#')
                         {
                             comentario = false;
+                        }
+
+                        if (letra == '$')
+                        {
+                            comentario = false;
+                            ConsultarBD(CalcularNumeroColumna('$'), false);
                         }
 
                         if (letra == '_' || iden)
@@ -410,7 +423,7 @@ namespace ColinScript
                 new KeyValuePair<string, string>("S", "S S S S"),
 
                 //For
-                new KeyValuePair<string, string>("FOR", "PARE11 CAE( IDEN OPASIG IDEN CAE; CONDIC CAE; IDEN OPA OPA CAE)"),
+                new KeyValuePair<string, string>("FOR", "PARE11 CAE( CON CAE; CONDIC CAE; IDEN OPA OPA CAE)"),
                 new KeyValuePair<string, string>("FOR", "PARE11 CAE( IDEN OPASIG CONU CAE; CONDIC CAE; IDEN OPA OPA CAE)"),
 
                 //Do While
@@ -679,6 +692,9 @@ namespace ColinScript
                 new KeyValuePair<string, string>("S", "PARE07 DEC OPASIG DEC"),
                 new KeyValuePair<string, string>("S", "PARE18 CAD OPASIG CAD"),
 
+                //FOR
+                new KeyValuePair<string, string>("S", "PARE11 CAE( ENT OPASIG ENT CAE; ENT OPR ENT CAE; ENT OPAS OPAS CAE)"),
+                
                 //IF
                 new KeyValuePair<string, string>("S", "PARE12 CAE( ENT OPR ENT CAE)"),
                 new KeyValuePair<string, string>("S", "PARE12 CAE( ENT OPR DEC CAE)"),
@@ -691,11 +707,19 @@ namespace ColinScript
                 new KeyValuePair<string, string>("S", "PARE16 ENT"),
                 new KeyValuePair<string, string>("S", "PARE16 DEC"),
                 new KeyValuePair<string, string>("S", "PARE16 CAD"),
-                new KeyValuePair<string, string>("S", "PARE16 ENT OPA ENT"),
-                new KeyValuePair<string, string>("S", "PARE16 ENT OPA DEC"),
-                new KeyValuePair<string, string>("S", "PARE16 DEC OPA ENT"),
+                new KeyValuePair<string, string>("S", "PARE16 ENT OPAS ENT"),
+                new KeyValuePair<string, string>("S", "PARE16 ENT OPAS DEC"),
+                new KeyValuePair<string, string>("S", "PARE16 DEC OPAS ENT"),
+                new KeyValuePair<string, string>("S", "PARE16 DEC OPAS DEC"),
+                new KeyValuePair<string, string>("S", "PARE16 ENT OPAR ENT"),
+                new KeyValuePair<string, string>("S", "PARE16 ENT OPAR DEC"),
+                new KeyValuePair<string, string>("S", "PARE16 DEC OPAR ENT"),
+                new KeyValuePair<string, string>("S", "PARE16 DEC OPAR DEC"),
+                new KeyValuePair<string, string>("S", "PARE16 ENT OPAM ENT"),
+                new KeyValuePair<string, string>("S", "PARE16 ENT OPAM DEC"),
+                new KeyValuePair<string, string>("S", "PARE16 DEC OPAM ENT"),
+                new KeyValuePair<string, string>("S", "PARE16 DEC OPAM DEC"),
                 new KeyValuePair<string, string>("S", "PARE16 DEC OPAD DEC"),
-                new KeyValuePair<string, string>("OPA", "OPAS|OPAR|OPAM"),
 
                 //IN
                 new KeyValuePair<string, string>("S", "PARE13 ENT"),
@@ -703,7 +727,9 @@ namespace ColinScript
                 new KeyValuePair<string, string>("S", "PARE13 CAD"),
 
                 //TRANSFORMACION DE TIPOS DE DATOS
-                new KeyValuePair<string, string>("ENT", "ENT OPA ENT"),
+                new KeyValuePair<string, string>("ENT", "ENT OPAD ENT"),
+                new KeyValuePair<string, string>("ENT", "ENT OPAM ENT"),
+                new KeyValuePair<string, string>("ENT", "ENT OPAS ENT"),
                 new KeyValuePair<string, string>("DEC", "CNR"),
 
                 new KeyValuePair<string, string>("ENT", "CNE"),
@@ -717,6 +743,8 @@ namespace ColinScript
                 new KeyValuePair<string, string>("CON", "CON CON"),
                 new KeyValuePair<string, string>("CON", "IF { CON }"),
                 new KeyValuePair<string, string>("CON", "IF { }"),
+                new KeyValuePair<string, string>("CON", "FOR { CON }"),
+                new KeyValuePair<string, string>("CON", "FOR { }"),
             };
 
             foreach (string Lineas in richtxt_token.Lines)
@@ -764,7 +792,7 @@ namespace ColinScript
                     }
                 }
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     //Recorre el diccionario de abajo hacia arriba
                     foreach (var item in gramaticaexpresiones.AsEnumerable().Reverse())
@@ -814,7 +842,7 @@ namespace ColinScript
 
                 //Validacion de corchetes
 
-                if (archivoTemporal[i] == "IF ")
+                if (archivoTemporal[i] == "IF " || archivoTemporal[i] == "FOR " || archivoTemporal[i] == "DO ")
                 {
                     PosibleDesbalance.Add(i + 1);
                     Corchetes.Add(0);
@@ -839,7 +867,7 @@ namespace ColinScript
 
 
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
                 //Recorre el diccionario de abajo hacia arriba
                 foreach (var item in JELU.AsEnumerable().Reverse())
@@ -947,34 +975,24 @@ namespace ColinScript
             dgvTripleta.Rows.Clear();
 
             int _intNumLinea = 0;
+            _intTemporal = 0;
 
             List<string> Codigo = new List<string>();
 
-            foreach (string linea in txt_codigo.Lines)
+            foreach (string Linea in txt_codigo.Lines)
             {
-                Codigo.Add(linea);
-            }
-
-            foreach (string Linea in archivoTemporal)
-            {
-                
-                switch (Linea)
+                if (Linea.StartsWith("_")) //Asignacion
                 {
-                    case "CON ": //Una asignacion o una declaracion
-                        if (Codigo[_intNumLinea][0] == 'I') 
-                        { 
-                            dgvPrefijo.Rows.Add(Codigo[_intNumLinea].Substring(4, Codigo[_intNumLinea].Length - 4), ConvertirInfijaAPrefija(Codigo[_intNumLinea].Substring(4, Codigo[_intNumLinea].Length - 4))); 
-                        }
-                        else { dgvPrefijo.Rows.Add(Codigo[_intNumLinea], ConvertirInfijaAPrefija(Codigo[_intNumLinea])); }
-                        
-                        break;
+                    dgvPrefijo.Rows.Add(Linea, ConvertirInfijaAPrefija(Linea));
                 }
-                _intNumLinea++;
+
+                if (Linea.StartsWith("Int")) //Declaracion
+                {
+                    dgvPrefijo.Rows.Add(Linea.Substring(4, Linea.Length - 4), ConvertirInfijaAPrefija(Linea.Substring(4, Linea.Length - 4)));
+                }
             }
 
-
-            _intNumLinea = 1;
-
+            
             foreach (DataGridViewRow fila in dgvPrefijo.Rows)
             {
                 if (fila.Cells[1].Value != null)
@@ -1142,5 +1160,383 @@ namespace ColinScript
             return token == "+" || token == "-" || token == "*" || token == "/" || token == "=";
         }
 
+        private void btnEjecutarEnsamblador_Click(object sender, EventArgs e)
+        {
+            string codigo = "using System;" +
+                "\n\rclass Program()" +
+                "\n\r{" +
+                "\n\rstatic void Main()" +
+                "\n\r{";
+
+            foreach (var linea in txt_codigo.Lines)
+            {
+                string traducida = TraducirLinea(linea);
+                codigo += "\n\r" + traducida;
+            }
+
+
+            codigo += "\n\rConsole.ReadKey();" +
+                "\n\r}" +
+                "\n\r}";
+
+            
+
+            string codigoFuente = txt_codigo.Text;
+            string[] lineas = codigoFuente.Split('\n');
+            string resultadoASM = TraducirATASM(lineas, dgvPrefijo);
+            richEnsamblador.Text = resultadoASM;
+
+            Ejecutar(codigo);
+        }
+
+        string TraducirLinea(string linea)
+        {
+            linea = linea.Trim();
+
+            if (linea.StartsWith("Dec "))
+                return "double " + linea.Substring(4) + ";";
+
+            if (linea.StartsWith("Int "))
+                return "int " + linea.Substring(4) + ";";
+
+            if (linea.StartsWith("In "))
+            {
+                string variable = linea.Substring(3).Trim();
+                string tipo = ObtenerTipoDeVariable(variable);
+
+                if (tipo == "int")
+                    return $"{variable} = int.Parse(Console.ReadLine());";
+                else if (tipo == "dec")
+                    return $"{variable} = double.Parse(Console.ReadLine());";
+                else if (tipo == "string")
+                    return $"{variable} = Console.ReadLine();";
+                else
+                    return $"// Tipo desconocido para {variable}";
+            }
+
+            if (linea.StartsWith("Out "))
+            {
+                var contenido = linea.Substring(4).Trim();
+
+                if (contenido == "$\\n$" || contenido == "$\n$")
+                {
+                    return "Console.WriteLine();";
+                }
+                else if (contenido.StartsWith("$") && contenido.EndsWith("$"))
+                {
+                    string literal = contenido.Substring(1, contenido.Length - 2)
+                                             .Replace("\\\"", "\"");
+                    return $"Console.Write(\"{literal}\");";
+                }
+                else
+                {
+                    return $"Console.Write({contenido});";
+                }
+            }
+
+            if (linea.StartsWith("If "))
+            {
+                string condicion = linea.Substring(3).Trim();
+                return "if " + condicion;
+            }
+
+            if (linea == "Start {") return "";
+            if (linea == "} End") return "";
+
+            if (linea.StartsWith("For "))
+            {
+                string contenido = linea.Substring(4).Trim();
+
+                // Por si hay espacios de más en el "++"
+                contenido = contenido.Replace("+ +", "++");
+
+                return "for " + contenido;
+            }
+
+            if (linea.StartsWith("_"))
+            {
+                return linea + ";";
+            }
+
+            // Por si acaso, corregimos ++ mal escritos
+            linea = linea.Replace("+ +", "++");
+
+            
+            return linea;
+        }
+
+        string ObtenerTipoDeVariable(string nombreVariable)
+        {
+            foreach (DataGridViewRow fila in dgvTablaSimbolos.Rows)
+            {
+                if (fila.Cells[1].Value?.ToString() == nombreVariable)
+                {
+                    return fila.Cells[2].Value?.ToString(); // "int", "double", "string"
+                }
+            }
+            return null; // Si no se encuentra
+        }
+
+        private string TraducirATASM(string[] lineas, DataGridView dgvPrefijo)
+        {
+            var asm = new StringBuilder();
+
+            // Encabezado TASM
+            asm.AppendLine(".model small");
+            asm.AppendLine(".stack 100h");
+            asm.AppendLine(".data");
+
+            var variables = new List<string>();
+            var cadenas = new List<string>();
+            int contadorCadenas = 1;
+
+            // Primera pasada: detectar variables y cadenas
+            foreach (var linea in lineas)
+            {
+                if (linea.Trim().StartsWith("Int "))
+                {
+                    var nombre = linea.Split(new char[] { ' ', '=' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    asm.AppendLine($"{nombre} dw 0");
+                    variables.Add(nombre);
+                }
+                else if (linea.Trim().StartsWith("Dec "))
+                {
+                    var nombre = linea.Split(new char[] { ' ', '=' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                    asm.AppendLine($"{nombre} dw 0 ; decimal simulado");
+                    variables.Add(nombre);
+                }
+                else if (linea.Trim().StartsWith("Out $"))
+                {
+                    var contenido = linea.Trim().Replace("Out $", "").Replace("$", "").Replace("\\n", "\r\n");
+                    var nombreCadena = $"Cad{contadorCadenas}";
+                    asm.AppendLine($"{nombreCadena} db \"{contenido}\", '$'");
+                    cadenas.Add(nombreCadena);
+                    contadorCadenas++;
+                }
+            }
+
+            // Variables temporales
+            for (int i = 1; i <= 3; i++)
+            {
+                asm.AppendLine($"T{i} dw 0");
+            }
+
+            asm.AppendLine(".code");
+            asm.AppendLine("start:");
+            asm.AppendLine("    mov ax, @data");
+            asm.AppendLine("    mov ds, ax");
+
+            // Segunda pasada: instrucciones
+            foreach (var linea in lineas)
+            {
+                var l = linea.Trim();
+
+                if (l.StartsWith("Out $"))
+                {
+                    asm.AppendLine($"    mov ah, 9");
+                    asm.AppendLine($"    lea dx, {cadenas[0]}");
+                    asm.AppendLine($"    int 21h");
+                    cadenas.RemoveAt(0);
+                }
+                else if (l.StartsWith("Out "))
+                {
+                    var valor = l.Replace("Out ", "").Trim();
+                    asm.AppendLine($"    mov ax, {valor}");
+                    asm.AppendLine($"    call PrintNumber");
+                }
+                else if (l.StartsWith("In "))
+                {
+                    var nombre = l.Split(' ')[1];
+                    asm.AppendLine($"    ; Lectura para {nombre} (requiere rutina personalizada)");
+                }
+                else if (l.StartsWith("For"))
+                {
+                    asm.AppendLine("    mov It, 1");
+                    asm.AppendLine("for_loop:");
+                    asm.AppendLine("    cmp It, 11");
+                    asm.AppendLine("    jge end_for");
+                }
+                else if (l.StartsWith("If"))
+                {
+                    var condicion = l.Replace("If", "").Trim('(', ')', ' ');
+                    var etiqueta = $"cond_{Guid.NewGuid().ToString("N").Substring(0, 6)}";
+                    asm.AppendLine($"    ; If ({condicion})");
+                    asm.AppendLine($"    ; Aquí iría lógica para {condicion}");
+                    asm.AppendLine($"    ; jnz {etiqueta}");
+                }
+                else if (l.Contains('=') && (l.Contains('+') || l.Contains('*') || l.Contains('-') || l.Contains('/')))
+                {
+                    var asmDesdePrefijo = GenerarAsmDesdePrefijoParaLinea(l, dgvPrefijo);
+                    asm.AppendLine(asmDesdePrefijo);
+                }
+                else if (l.StartsWith("}"))
+                {
+                    asm.AppendLine("    ; Fin de bloque");
+                }
+            }
+
+            asm.AppendLine("end_for:");
+            asm.AppendLine("    mov ah, 4Ch");
+            asm.AppendLine("    int 21h");
+
+            // Subrutina PrintNumber
+            asm.AppendLine(@"
+PrintNumber proc
+    push ax
+    push bx
+    push cx
+    push dx
+    xor cx, cx
+    mov bx, 10
+.next:
+    xor dx, dx
+    div bx
+    push dx
+    inc cx
+    test ax, ax
+    jnz .next
+.print:
+    pop dx
+    add dl, '0'
+    mov ah, 2
+    int 21h
+    loop .print
+    pop dx
+    pop cx
+    pop bx
+    pop ax
+    ret
+PrintNumber endp
+");
+
+            return asm.ToString();
+        }
+
+        private string GenerarAsmDesdePrefijoParaLinea(string lineaOriginal, DataGridView dgvPrefijo)
+        {
+            var sb = new StringBuilder();
+
+            string destino = lineaOriginal.Split('=')[0].Trim();
+
+            string prefija = null;
+            foreach (DataGridViewRow fila in dgvPrefijo.Rows)
+            {
+                if (fila.IsNewRow) continue;
+
+                string infija = fila.Cells[0].Value?.ToString()?.Trim();
+                if (infija == lineaOriginal.Trim())
+                {
+                    prefija = fila.Cells[1].Value?.ToString()?.Trim();
+                    break;
+                }
+            }
+
+            if (string.IsNullOrEmpty(prefija))
+            {
+                sb.AppendLine($"; No se encontró versión prefija de: {lineaOriginal}");
+                return sb.ToString();
+            }
+
+            var tokens = prefija.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            var pila = new Stack<string>();
+            int tempNum = 1;
+
+            for (int i = tokens.Length - 1; i >= 0; i--)
+            {
+                string token = tokens[i];
+
+                if (EsOperador(token))
+                {
+                    string op1 = pila.Pop();
+                    string op2 = pila.Pop();
+                    string temp = $"T{tempNum++}";
+
+                    sb.AppendLine($"; {temp} = {op1} {token} {op2}");
+                    sb.AppendLine($"    mov ax, {op1}");
+
+                    switch (token)
+                    {
+                        case "*":
+                            sb.AppendLine($"    mov bx, {op2}");
+                            sb.AppendLine($"    mul bx");
+                            break;
+                        case "/":
+                            sb.AppendLine($"    mov dx, 0");
+                            sb.AppendLine($"    mov bx, {op2}");
+                            sb.AppendLine($"    div bx");
+                            break;
+                        case "+":
+                            sb.AppendLine($"    mov bx, {op2}");
+                            sb.AppendLine($"    add ax, bx");
+                            break;
+                        case "-":
+                            sb.AppendLine($"    mov bx, {op2}");
+                            sb.AppendLine($"    sub ax, bx");
+                            break;
+                    }
+
+                    sb.AppendLine($"    mov {temp}, ax");
+                    pila.Push(temp);
+                }
+                else
+                {
+                    pila.Push(token);
+                }
+            }
+
+            string resultadoFinal = pila.Pop();
+            sb.AppendLine($"    mov ax, {resultadoFinal}");
+            sb.AppendLine($"    mov {destino}, ax");
+            sb.AppendLine();
+
+            return sb.ToString();
+        }
+
+
+
+
+        public void Ejecutar(string codigo)
+        {
+            // Compilar y generar exe
+            string rutaExe = Path.Combine(Path.GetTempPath(), "programaGenerado.exe");
+
+            var syntaxTree = CSharpSyntaxTree.ParseText(codigo);
+
+            var references = new MetadataReference[]
+            {
+                MetadataReference.CreateFromFile(typeof(object).Assembly.Location),
+                MetadataReference.CreateFromFile(typeof(Console).Assembly.Location),
+            };
+
+            var compilation = CSharpCompilation.Create(
+                "programaGenerado.exe",
+                new[] { syntaxTree },
+                references,
+                new CSharpCompilationOptions(OutputKind.ConsoleApplication)
+            );
+
+            EmitResult result;
+
+            using (var fs = new FileStream(rutaExe, FileMode.Create))
+            {
+                result = compilation.Emit(fs);
+            }
+
+            if (!result.Success)
+            {
+                // Mostrar errores de compilación
+                var errores = string.Join(Environment.NewLine, result.Diagnostics);
+                MessageBox.Show("Errores de compilación:" + Environment.NewLine + errores);
+                return;
+            }
+
+            // Ejecutar el exe y mostrar consola
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = rutaExe,
+                UseShellExecute = true,
+                CreateNoWindow = false
+            });
+        }
     }
 }

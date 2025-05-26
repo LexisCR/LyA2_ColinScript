@@ -1,0 +1,29 @@
+Start {
+Dec _Numero1 = 0.0
+Dec _Numero2 = 0.0
+Int _Opcion = 0
+Out $OPERACIONES\n$
+Out $1-Suma   2-Resta   3-Multiplicacion   4-Division\n$
+Out $Ingresa una opcion: $
+In _Opcion
+Out $Ingresa un numero: $
+In _Numero1
+Out $Ingresa otro numero: $
+In _Numero2
+If ( _Opcion == 1 )
+{
+Out _Numero1 + _Numero2
+}
+If ( _Opcion == 2 )
+{
+Out _Numero1 - _Numero2
+}
+If ( _Opcion == 3 )
+{
+Out _Numero1 * _Numero2
+}
+If ( _Opcion == 4 )
+{
+Out _Numero1 / _Numero2
+}
+} End
