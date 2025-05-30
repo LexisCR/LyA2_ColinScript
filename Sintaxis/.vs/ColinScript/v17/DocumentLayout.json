@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\aleja\\Documents\\ColinScript\\LyA2_ColinScript\\Sintaxis\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|C:\\Users\\aleja\\Documents\\ColinScript\\LyA2_ColinScript\\Sintaxis\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|c:\\users\\aleja\\documents\\colinscript\\lya2_colinscript\\sintaxis\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|solutionrelative:colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|c:\\users\\aleja\\documents\\colinscript\\lya2_colinscript\\sintaxis\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|C:\\Users\\aleja\\Documents\\ColinScript\\LyA2_ColinScript\\Sintaxis\\colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EC4FA40C-0D81-4D53-BF81-D5F96E314CFF}|ColinScript\\ColinScript.csproj|solutionrelative:colinscript\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "ColinScript\\Form1.cs",
               "ToolTip": "C:\\Users\\aleja\\Documents\\ColinScript\\LyA2_ColinScript\\Sintaxis\\ColinScript\\Form1.cs",
               "RelativeToolTip": "ColinScript\\Form1.cs",
-              "ViewState": "AgIAAN0CAAAAAAAAAAAcwOUCAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAOgEAAAAAAAAAAAcwPYEAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-23T21:32:46.476Z",
               "IsPinned": true,
@@ -43,8 +43,7 @@
               "ToolTip": "C:\\Users\\aleja\\Documents\\ColinScript\\LyA2_ColinScript\\Sintaxis\\ColinScript\\Form1.cs [Design]",
               "RelativeToolTip": "ColinScript\\Form1.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-05T22:19:20.784Z",
-              "EditorCaption": " [Design]"
+              "WhenOpened": "2025-05-05T22:19:20.784Z"
             }
           ]
         }

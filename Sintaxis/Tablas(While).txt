@@ -1,0 +1,17 @@
+Start {
+Int _Numero = 0
+Int _It = 1
+Out $TABLAS DE MULTIPLICAR\n$
+Out $Ingresa un numero: $
+In _Numero
+While ( _It > 11 )
+{
+Out _Numero
+Out $x$
+Out _It
+Out $=$
+Out _Numero * _It
+Out $\n$
+_It = _It + 1
+}
+} End

@@ -692,6 +692,9 @@ namespace ColinScript
                 new KeyValuePair<string, string>("S", "PARE07 DEC OPASIG DEC"),
                 new KeyValuePair<string, string>("S", "PARE18 CAD OPASIG CAD"),
 
+                //WHILE
+                new KeyValuePair<string, string>("S", "PARE22 CAE( ENT OPR ENT CAE)"),
+
                 //FOR
                 new KeyValuePair<string, string>("S", "PARE11 CAE( ENT OPASIG ENT CAE; ENT OPR ENT CAE; ENT OPAS OPAS CAE)"),
                 
@@ -743,6 +746,8 @@ namespace ColinScript
                 new KeyValuePair<string, string>("CON", "CON CON"),
                 new KeyValuePair<string, string>("CON", "IF { CON }"),
                 new KeyValuePair<string, string>("CON", "IF { }"),
+                new KeyValuePair<string, string>("CON", "WHILE { CON }"),
+                new KeyValuePair<string, string>("CON", "WHILE { }"),
                 new KeyValuePair<string, string>("CON", "FOR { CON }"),
                 new KeyValuePair<string, string>("CON", "FOR { }"),
             };
@@ -842,7 +847,7 @@ namespace ColinScript
 
                 //Validacion de corchetes
 
-                if (archivoTemporal[i] == "IF " || archivoTemporal[i] == "FOR " || archivoTemporal[i] == "DO ")
+                if (archivoTemporal[i] == "IF " || archivoTemporal[i] == "FOR " || archivoTemporal[i] == "WHILE ")
                 {
                     PosibleDesbalance.Add(i + 1);
                     Corchetes.Add(0);
@@ -1240,16 +1245,21 @@ namespace ColinScript
                 return "if " + condicion;
             }
 
+            if (linea.StartsWith("While "))
+            {
+                string condicion = linea.Substring(6).Trim();
+                return "while " + condicion;
+            }
+
             if (linea == "Start {") return "";
             if (linea == "} End") return "";
+            if (linea == "{") return "{";
+            if (linea == "}") return "}";
 
             if (linea.StartsWith("For "))
             {
                 string contenido = linea.Substring(4).Trim();
-
-                // Por si hay espacios de más en el "++"
                 contenido = contenido.Replace("+ +", "++");
-
                 return "for " + contenido;
             }
 
@@ -1258,12 +1268,11 @@ namespace ColinScript
                 return linea + ";";
             }
 
-            // Por si acaso, corregimos ++ mal escritos
             linea = linea.Replace("+ +", "++");
 
-            
             return linea;
         }
+
 
         string ObtenerTipoDeVariable(string nombreVariable)
         {
